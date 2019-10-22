@@ -1,7 +1,7 @@
 {
   "name": "windrose-panel",
-  "version": "0.7.0",
-  "description": "Wind Rose Plugin for Grafana",
+  "version": "0.7.1",
+  "description": "Hiber's Modified Wind Rose Plugin for Grafana",
   "scripts": {
     "build": "grunt",
     "test": "./node_modules/karma/bin/karma start",
@@ -13,7 +13,7 @@
   "keywords": ["plotly", "scatter", "grafana", "plugin", "panel"],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/magnitudespace/windrose-panel/"
   },
   "prettier": {
     "singleQuote": true,
