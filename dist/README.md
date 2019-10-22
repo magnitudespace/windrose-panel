@@ -1,4 +1,4 @@
-## Windrose Panel for Grafana
+## Hiber's Windrose Panel for Grafana
 
 Render metrics into a windrose chart.
 
@@ -53,5 +53,7 @@ Taipei, Taiwan.
 cloud@seabunny.tech
 
 RCAS: Research Center for Applied Sciences, RCEC: Research Center for Environmental Changes, NCHC: National Center for High-performance Computing, TORI: Taiwan Ocean Research Institute.
+
+The fork is a modified and customised version of [fatcloud windrose panel for grafana](https://github.com/fatcloud/windrose-panel).
 
 The code based is modified from a fork of [plotly panel for grafana](https://github.com/NatelEnergy/grafana-plotly-panel).

@@ -144,9 +144,10 @@ System.register(["app/plugins/sdk", "lodash", "jquery", "./lib/plotly.min"], fun
                         }),
                     };
                     var cfg = this.panel.pconfig;
+                    console.log('benjamin cfg', cfg);
                     this.axis = [
                         {
-                            disp: 'Angle',
+                            disp: 'Azimuth',
                             idx: 1,
                             metric: function (name) {
                                 if (name) {
@@ -156,7 +157,7 @@ System.register(["app/plugins/sdk", "lodash", "jquery", "./lib/plotly.min"], fun
                             },
                         },
                         {
-                            disp: 'Distance',
+                            disp: 'Elevation',
                             idx: 2,
                             metric: function (name) {
                                 if (name) {
@@ -349,7 +350,7 @@ System.register(["app/plugins/sdk", "lodash", "jquery", "./lib/plotly.min"], fun
                                 points_on_dir[angle_idx].push(r[p]);
                             }
                             var petals = [];
-                            var max_speed = Math.max.apply(Math, r);
+                            var max_speed = 90;
                             var bin_size = cfg.settings.wind_speed_interval;
                             var bin_num = Math.ceil(max_speed / bin_size);
                             var speed_levels = [];
@@ -393,7 +394,7 @@ System.register(["app/plugins/sdk", "lodash", "jquery", "./lib/plotly.min"], fun
                                 var lower_level = speed_levels[bin_idx];
                                 var upper_level = speed_levels[bin_idx + 1];
                                 trace['name'] =
-                                    lower_level.toString() + ' - ' + upper_level.toString() + ' m/s';
+                                    lower_level.toString() + ' - ' + upper_level.toString() + '°';
                                 trace['type'] = 'scatterpolar';
                                 trace['mode'] = 'lines';
                                 trace['theta'] = thetas;
@@ -448,7 +449,7 @@ System.register(["app/plugins/sdk", "lodash", "jquery", "./lib/plotly.min"], fun
                     };
                     this.panel.pconfig.layout.showlegend = legendmapping[plot_type];
                     var radialaxismapping = {
-                        scatter: { ticksuffix: ' m/s', angle: 90 },
+                        scatter: { ticksuffix: '°', angle: 90 },
                         windrose: { ticksuffix: '%', angle: 90 },
                     };
                     this.panel.pconfig.layout.polar.radialaxis = radialaxismapping[plot_type];

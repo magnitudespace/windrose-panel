@@ -168,6 +168,7 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
     };
 
     let cfg = this.panel.pconfig;
+    console.log('benjamin cfg', cfg);
     this.axis = [
       {
         disp: 'Azimuth',
@@ -268,9 +269,10 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
         z: null,
       };
 
-      // console.log( "plotly data", dataList);
       let cfg = this.panel.pconfig;
       let mapping = cfg.mapping;
+      // console.log( "plotly data", dataList);
+      // console.log('plotly cfg', cfg);
       let key = {
         name: '@time',
         type: 'ms',
@@ -478,8 +480,7 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
           var trace = {};
           let lower_level = speed_levels[bin_idx];
           let upper_level = speed_levels[bin_idx + 1];
-          trace['name'] =
-            lower_level.toString() + ' - ' + upper_level.toString() + '°';
+          trace['name'] = lower_level.toString() + ' - ' + upper_level.toString() + '°';
           trace['type'] = 'scatterpolar';
           trace['mode'] = 'lines';
           trace['theta'] = thetas;

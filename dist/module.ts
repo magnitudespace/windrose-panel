@@ -168,9 +168,10 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
     };
 
     let cfg = this.panel.pconfig;
+    console.log('benjamin cfg', cfg);
     this.axis = [
       {
-        disp: 'Angle',
+        disp: 'Azimuth',
         idx: 1,
         metric: name => {
           if (name) {
@@ -180,7 +181,7 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
         },
       },
       {
-        disp: 'Distance',
+        disp: 'Elevation',
         idx: 2,
         metric: name => {
           if (name) {
@@ -268,9 +269,10 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
         z: null,
       };
 
-      // console.log( "plotly data", dataList);
       let cfg = this.panel.pconfig;
       let mapping = cfg.mapping;
+      // console.log( "plotly data", dataList);
+      // console.log('plotly cfg', cfg);
       let key = {
         name: '@time',
         type: 'ms',
@@ -419,7 +421,7 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
         let petals = [];
 
         // find max wind speed and speed levels
-        let max_speed = Math.max(...r);
+        let max_speed = 90;
         let bin_size = cfg.settings.wind_speed_interval; //  max_speed / bin_num);
         let bin_num = Math.ceil(max_speed / bin_size);
         let speed_levels = [];
@@ -479,7 +481,7 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
           let lower_level = speed_levels[bin_idx];
           let upper_level = speed_levels[bin_idx + 1];
           trace['name'] =
-            lower_level.toString() + ' - ' + upper_level.toString() + ' m/s';
+            lower_level.toString() + ' - ' + upper_level.toString() + '°';
           trace['type'] = 'scatterpolar';
           trace['mode'] = 'lines';
           trace['theta'] = thetas;
@@ -542,7 +544,7 @@ class PlotlyPanelCtrl extends MetricsPanelCtrl {
     this.panel.pconfig.layout.showlegend = legendmapping[plot_type];
 
     let radialaxismapping = {
-      scatter: {ticksuffix: ' m/s', angle: 90},
+      scatter: {ticksuffix: '°', angle: 90},
       windrose: {ticksuffix: '%', angle: 90},
     };
     this.panel.pconfig.layout.polar.radialaxis = radialaxismapping[plot_type];
